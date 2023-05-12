@@ -20,7 +20,25 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
-    /* font-family: 'exo'; */
+
+    font-size: 13px;
+
+  
+    @media screen and (min-width: 768px) {
+      /* 태블릿 크기 이상일 때 */
+      font-size: 16px;
+    }
+  
+    @media screen and (min-width: 1024px) {
+      /* 작은 데스크탑 크기 이상일 때 */
+      font-size: 18px;
+    }
+  
+    @media screen and (min-width: 1440px) {
+      /* 큰 데스크탑 크기 이상일 때 */
+      font-size: 20px;
+      
+    }
   }
 `;
 

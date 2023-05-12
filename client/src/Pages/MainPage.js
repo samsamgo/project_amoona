@@ -3,8 +3,9 @@ import "animate.css/animate.min.css";
 // import Map from "../Component/Map";
 import styled from "styled-components";
 import Search from "../Component/Search";
-// import Nav from "../Component/Nav";
+import Nav from "../Component/Nav";
 import DummyData from "../Asset/DummyData"; //이름 바꾸기
+import Services from "../Component/sevice";
 import Reqboxdiv from "../Component/Reqboxdiv";
 import PostDetail from "../Component/PostDetail";
 
@@ -91,11 +92,12 @@ function MainPage() {
         </ModalBackdrop>
       )}
       <Search handleSearch={handleSearch} />
+      <Services/>
       <Maindiv>
         <Mapdiv className={`${isMapVisible ? "fade-in" : "fade-out"}`}>
           {/* <Map /> */}
         </Mapdiv>
-        {/* <Nav /> */}
+        <Nav />
         <Reqdiv isReqVisible={isReqVisible}>
           {data1 && data1.map((id) => {
             return (
