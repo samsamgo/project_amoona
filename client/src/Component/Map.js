@@ -111,19 +111,20 @@ const Map = ({ maplevel }) => {
       infoWindow.open(map, marker);
     });
 
-    podata && podata.map((item) => {
-      const marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(
-          parseFloat(item.lat),
-          parseFloat(item.lng)
-        ),
-        title: item.item,
-        image: markerImage,
+    podata &&
+      podata.map((item) => {
+        const marker = new kakao.maps.Marker({
+          map: map,
+          position: new kakao.maps.LatLng(
+            parseFloat(item.lat),
+            parseFloat(item.lng)
+          ),
+          title: item.item,
+          image: markerImage,
+        });
+        // console.log(parseFloat(item.lng));
+        marker.setMap(map);
       });
-      // console.log(parseFloat(item.lng));
-      marker.setMap(map);
-    });
 
     kakao.maps.event.addListener(map, "click", (event) => {
       setlat(event.latLng.getLat());

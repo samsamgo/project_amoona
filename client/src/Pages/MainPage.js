@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "animate.css/animate.min.css";
-// import Map from "../Component/Map";
+import Map from "../Component/Map";
 import styled from "styled-components";
 import Search from "../Component/Search";
 import Nav from "../Component/Nav";
@@ -91,29 +91,31 @@ function MainPage() {
           <PostDetail openModal={openpostdeModal} />
         </ModalBackdrop>
       )}
-      <Search handleSearch={handleSearch} />
-      <Services/>
+      <Search />
+      <Services />
       <Maindiv>
-        <Mapdiv className={`${isMapVisible ? "fade-in" : "fade-out"}`}>
-          {/* <Map /> */}
+        {/*  className={`${isMapVisible ? "fade-in" : "fade-out"}`}> */}
+        <Mapdiv>
+          <Map />
         </Mapdiv>
         <Nav />
         <Reqdiv isReqVisible={isReqVisible}>
-          {data1 && data1.map((id) => {
-            return (
-              <Reqboxdiv
-                name={id.name}
-                img={id.image}
-                Date={id.date}
-                Time={id.time}
-                Party={id.playerNum}
-                item={id.event}
-                Location={id.location}
-                openModal={openpostdeModal}
-                value={id.postId}
-              />
-            );
-          })}
+          {data1 &&
+            data1.map((id) => {
+              return (
+                <Reqboxdiv
+                  name={id.name}
+                  img={id.image}
+                  Date={id.date}
+                  Time={id.time}
+                  Party={id.playerNum}
+                  item={id.event}
+                  Location={id.location}
+                  openModal={openpostdeModal}
+                  value={id.postId}
+                />
+              );
+            })}
         </Reqdiv>
       </Maindiv>
     </>
@@ -138,10 +140,10 @@ const Mapdiv = styled.div`
   opacity: 0;
   visibility: hidden;
   transition: all 2s;
-  &.fade-in {
-    opacity: 1;
-    visibility: visible;
-  }
+  // &.fade-in {
+  //   opacity: 1;
+  //   visibility: visible;
+  // }
 `;
 // const Mapdiv = styled.div`
 //   width: 100vw;

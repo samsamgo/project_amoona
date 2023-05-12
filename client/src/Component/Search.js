@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import '../Asset/styles.css'
+import "../Asset/styles.css";
 
 function Search() {
-
   return (
-    <SearchWrapper>
+    <SearchWrapper id="page-top">
       <Title>운동하고 싶은 사람 AMOONA 모여라</Title>
       <Tagline>TRY EVERY THING WITH YOUR TEAM</Tagline>
 
-      <Buttonhr className="btn btn-primary btn-xl text-uppercase" onClick={() => window.location.href="#services"}>Tell Me More</Buttonhr>
+      <Buttonhr
+        className="btn btn-primary btn-xl text-uppercase"
+        onClick={() => (window.location.href = "#services")}
+      >
+        Tell Me More
+      </Buttonhr>
     </SearchWrapper>
   );
 }
@@ -30,7 +34,7 @@ const SearchWrapper = styled.div`
   padding: 30px 30px;
   padding: 100px;
   @media (max-width: 768px) {
-    padding :50px;   
+    padding: 50px;
   }
   display: flex;
   flex-direction: column;
@@ -42,10 +46,12 @@ const SearchWrapper = styled.div`
 const Title = styled.div`
   font-size: 3rem;
   font-weight: bold;
+  margin: 2rem 0rem;
 `;
 
 const Tagline = styled.div`
   font-size: 2.5rem;
+  margin: 2rem 0rem;
   font-weight: medium;
 `;
 
@@ -63,7 +69,7 @@ const Buttonhr = styled.button`
   }
   width: 240px;
   height: 25px;
-  
+
   @media screen and (min-width: 768px) {
     /* 태블릿 크기 이상일 때 */
     width: 270px;
@@ -81,4 +87,4 @@ const Buttonhr = styled.button`
     width: 330px;
     height: 55px;
   }
-`
+`;

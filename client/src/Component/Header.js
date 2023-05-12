@@ -99,11 +99,11 @@ import logo from "../Asset/2.png";
 
 // export default Header;
 
-import styled from 'styled-components';
-import '../Asset/styles.css'
-import '../Asset/styles.css';
-import { useEffect } from 'react';
-import navbarScript from './navbarScript';
+import styled from "styled-components";
+import "../Asset/styles.css";
+import "../Asset/styles.css";
+import { useEffect } from "react";
+import navbarScript from "./navbarScript";
 
 const Nav = styled.nav`
   background-color: #000;
@@ -113,35 +113,66 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => {
-
   useEffect(() => {
     navbarScript();
   }, []);
 
-
   return (
     <Nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div className="container">
-        <a className="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <div
+          className="navbar-brand"
+          onClick={() => (window.location.href = "#page-top")}
+        >
+          <img src="assets/img/navbar-logo.svg" alt="..." />
+        </div>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           Menu
           <i className="fas fa-bars ms-1"></i>
         </button>
         <div className="collapse navbar-collapse" id="navbarResponsive">
           <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-            <li className="nav-item"><a className="nav-link" href="#services">Services</a></li>
-            <li className="nav-item"><a className="nav-link" href="#portfolio">Portfolio</a></li>
-            <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
-            <li className="nav-item"><a className="nav-link" href="#team">Team</a></li>
-            <li className="nav-item"><a className="nav-link" href="#contact">Contact</a></li>
+            <li className="nav-item">
+              <a className="nav-link" href="#services">
+                Services
+              </a>
+            </li>
+            <li className="nav-item">
+              <div
+                className="nav-link"
+                onClick={() => (window.location.href = "#Map")}
+              >
+                Map
+              </div>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#about">
+                About
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#team">
+                Team
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#contact">
+                Contact
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </Nav>
   );
-}
+};
 
 export default Navbar;
-
-
-

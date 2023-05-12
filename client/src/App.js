@@ -21,17 +21,17 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 0px;
 
-    font-size: 13px;
+    font-size: 10px;
 
   
     @media screen and (min-width: 768px) {
       /* 태블릿 크기 이상일 때 */
-      font-size: 16px;
+      font-size: 12px;
     }
   
     @media screen and (min-width: 1024px) {
       /* 작은 데스크탑 크기 이상일 때 */
-      font-size: 18px;
+      font-size: 15px;
     }
   
     @media screen and (min-width: 1440px) {
