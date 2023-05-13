@@ -146,16 +146,13 @@ const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
-              <div
-                className="nav-link"
-                onClick={() => (window.location.href = "#Map")}
-              >
+              <a className="nav-link" href="#Map">
                 Map
-              </div>
+              </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#about">
-                About
+              <a className="nav-link" href="#Team">
+                Team
               </a>
             </li>
             <li className="nav-item">

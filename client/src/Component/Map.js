@@ -1,15 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import DummyData from "../Asset/DummyData";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
 
 const Map = ({ maplevel }) => {
   const [address, setAddress] = useState([]);
   const dispatch = useDispatch();
-  const data = useSelector((state) => state);
-  const [map, setMap] = useState(null);
-  const mapRef = useRef(null);
   const mapContainer = useRef(null);
   const { kakao } = window;
   const position = new kakao.maps.LatLng(33.450701, 126.570667);
