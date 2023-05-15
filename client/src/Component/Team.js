@@ -4,70 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import DummyData from "../Asset/DummyData"; //이름 바꾸기
 import styled, { css, keyframes } from "styled-components";
 
-// 스타일된 컴포넌트를 사용하여 포트폴리오 아이템 스타일링
-const PortfolioItem = styled.div`
-  position: relative;
-  overflow: hidden;
-
-  &:hover .portfolio-hover {
-    opacity: 1;
-  }
-
-  .portfolio-hover {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: ease-in-out 0.3s;
-    background-color: rgba(0, 0, 0, 0.6);
-
-    .portfolio-hover-content {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
-      text-align: center;
-
-      i {
-        margin-top: -12px;
-      }
-    }
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    transition: ease-in-out 0.3s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-
-  .portfolio-caption {
-    padding: 1rem;
-    text-align: center;
-
-    .portfolio-caption-heading {
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .portfolio-caption-subheading {
-      font-size: 0.9rem;
-      font-style: italic;
-    }
-  }
-`;
-
 // 포트폴리오 섹션을 위한 컴포넌트
 function PortfolioSection() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state);
   const [expanded, setExpanded] = useState([]);
   const [data1, setdata1] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
+
   const handleClick = (nodeId) => {
     setExpanded((prevExpanded) => {
       if (prevExpanded.includes(nodeId)) {
@@ -147,7 +91,6 @@ function PortfolioSection() {
                   )}
                 </span>
               </div>
-
               {expanded.includes("내 주변(500m)") && (
                 <ul>
                   <NavBar expanded1>
@@ -161,6 +104,20 @@ function PortfolioSection() {
                 </ul>
               )}
             </Setlocsection>
+            <Serachdiv>
+              <div>
+                <i class="fa-solid fa-magnifying-glass  fa-2x"></i>
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="어떤 운동 하세요?"
+                  onChange={(e) => setSearchValue(e.target.value)}
+                  // onKeyPress={(event) =>
+                  //   event.key === "Enter" ? handleSearch(searchValue) : null
+                  // }
+                />
+              </div>
+            </Serachdiv>
           </Setlocdiv>
         </div>
 
@@ -171,7 +128,7 @@ function PortfolioSection() {
             {data1 &&
               data1.map((id) => {
                 return (
-                  <PortfolioItem key={id}>
+                  <PortfolioItem>
                     <a
                       className="portfolio-link"
                       data-bs-toggle="modal"
@@ -206,27 +163,55 @@ function PortfolioSection() {
 
 export default PortfolioSection;
 
+const Serachdiv = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  div {
+    position: relative;
+    input {
+      width: 300px;
+      height: 50px;
+      font-size: 1rem;
+      text-align: center;
+      text-align: center;
+      border: none;
+      border-bottom: 1px solid black; /* 밑줄 추가 */
+      outline: none; /* 포커스 시에 생기는 테두리 제거 */
+    }
+    i {
+      position: absolute;
+      left: 10px;
+      top: 25px;
+      transform: translateY(-50%);
+      color: gray;
+      font-size: 20px;
+      color: black;
+    }
+  }
+`;
+
 const Setlocdiv = styled.div`
-  width: 100%;
-  height: 300px;
+  width: auto;
+  height: auto;
   display: flex;
   flex-direction: row;
-  padding: 100px 100px 0px 40px;
-  justify-content: space-between;
-  div {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 25px 0px 25px 50px;
-  }
+  position: relative;
+  padding: 10px 5px;
 `;
 
 const Setlocsection = styled.section`
   display: flex;
+  width: 140px;
+  height: 50px;
+  position: relative;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   div {
     display: flex;
+    position: absolute;
+    width: 130px;
+    top: 15px;
+    left: 5px;
     flex-direction: row;
     span {
       font-size: 20px;
@@ -247,6 +232,9 @@ const slideDown = keyframes`
 const NavBar = styled.nav`
   overflow: hidden;
   transform: translateY(-100%);
+  position: absolute;
+  top: 70px;
+  left: 10px;
   transition: all 0.5s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -271,4 +259,62 @@ const RotatedIcon = styled.i`
   transform: rotateZ(${(props) => props.rotateZ || 0}deg);
   padding-bottom: ${(props) => props.paddingBottom || "0px"};
   margin: 0px 0px 0px 20px;
+`;
+
+// 스타일된 컴포넌트를 사용하여 포트폴리오 아이템 스타일링
+const PortfolioItem = styled.div`
+  position: relative;
+  overflow: hidden;
+
+  &:hover .portfolio-hover {
+    opacity: 1;
+  }
+
+  .portfolio-hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: ease-in-out 0.3s;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    .portfolio-hover-content {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+      text-align: center;
+
+      i {
+        margin-top: -12px;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    transition: ease-in-out 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .portfolio-caption {
+    padding: 1rem;
+    text-align: center;
+
+    .portfolio-caption-heading {
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-caption-subheading {
+      font-size: 0.9rem;
+      font-style: italic;
+    }
+  }
 `;
