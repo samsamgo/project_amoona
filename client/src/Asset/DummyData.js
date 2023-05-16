@@ -1,11 +1,9 @@
 import axios from "axios";
 
 async function DummyData() {
-  const result = await axios.get(
-    `http://ec2-54-180-138-46.ap-northeast-2.compute.amazonaws.com:8080/posts?page=1&size=15`
-  );
-  console.log(result.data.data);
-  return result.data.data;
+  const result = await axios.get(`http://localhost:4000/data`);
+  console.log(result.data);
+  return result.data;
 }
 
 export default DummyData();

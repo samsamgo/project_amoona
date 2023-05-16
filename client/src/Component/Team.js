@@ -7,9 +7,10 @@ import styled, { css, keyframes } from "styled-components";
 // 포트폴리오 섹션을 위한 컴포넌트
 function PortfolioSection() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state);
+
   const [expanded, setExpanded] = useState([]);
   const [data1, setdata1] = useState([]);
+  const data = useSelector((state) => state);
   const [searchValue, setSearchValue] = useState("");
 
   const handleClick = (nodeId) => {
@@ -31,21 +32,26 @@ function PortfolioSection() {
     if (data === 7) return "1KM";
   }
 
+  useEffect(() => {
+    console.log(DummyData);
+    const promise = DummyData;
+    const getData = () => {
+      promise.then((dummyData) => {
+        setdata1(dummyData);
+        console.log(data1);
+      });
+    };
+    getData();
+  }, []);
+
+  // const data1 = [
+  //   { name: 'example1', img: 'example1' },
+  //   { name: 'example2', img: 'example2' },
+  //   { name: 'example3', img: 'example3' },
+  // ];
+
   const ZoomClick = (nodeId) => {
     dispatch({ type: "SET_NUMBER", maplevel: nodeId });
-
-    useEffect(() => {
-      console.log(DummyData);
-      const promise = DummyData;
-      const getData = () => {
-        promise.then((dummyData) => {
-          setdata1(dummyData);
-          console.log(data1);
-        });
-      };
-      getData();
-    }, []);
-
     const handleSearch = (searchValue) => {
       if (searchValue === "축구") {
         setdata1(data1.filter((item) => item.event === "축구"));
@@ -124,31 +130,34 @@ function PortfolioSection() {
         <div className="row">
           <div className="col-lg-4 col-sm-6 mb-4">
             {/* 포트폴리오 아이템 */}
-
             {data1 &&
               data1.map((id) => {
                 return (
                   <PortfolioItem>
-                    <a
-                      className="portfolio-link"
-                      data-bs-toggle="modal"
-                      href={`#portfolioModal${id}`}
-                    >
-                      <div className="portfolio-hover">
-                        <div className="portfolio-hover-content">
-                          <i className="fas fa-plus fa-3x"></i>
+                    <div>
+                      <a
+                        className="portfolio-link"
+                        data-bs-toggle="modal"
+                        href={`#portfolioModal${id.name}`}
+                      >
+                        <div className="portfolio-hover">
+                          <div className="portfolio-hover-content">
+                            <i className="fas fa-plus fa-3x"></i>
+                          </div>
                         </div>
-                      </div>
-                      <img
-                        className="img-fluid"
-                        src={`assets/img/portfolio/${id}.jpg`}
-                        alt="..."
-                      />
-                    </a>
-                    <div className="portfolio-caption">
-                      <div className="portfolio-caption-heading">Threads</div>
-                      <div className="portfolio-caption-subheading text-muted">
-                        Illustration
+                        <img
+                          className="img-fluid"
+                          src={`assets/img/portfolio/${id.img}.jpg`}
+                          alt="..."
+                        />
+                      </a>
+                      <div className="portfolio-caption">
+                        <div className="portfolio-caption-heading">
+                          {id.name}
+                        </div>
+                        <div className="portfolio-caption-subheading text-muted">
+                          Illustration
+                        </div>
                       </div>
                     </div>
                   </PortfolioItem>
@@ -166,7 +175,7 @@ export default PortfolioSection;
 const Serachdiv = styled.div`
   position: absolute;
   right: 10px;
-  top: 5px;
+  top: 10px;
   div {
     position: relative;
     input {
@@ -210,7 +219,7 @@ const Setlocsection = styled.section`
     display: flex;
     position: absolute;
     width: 130px;
-    top: 15px;
+    top: 0px;
     left: 5px;
     flex-direction: row;
     span {
@@ -233,7 +242,7 @@ const NavBar = styled.nav`
   overflow: hidden;
   transform: translateY(-100%);
   position: absolute;
-  top: 70px;
+  top: 65px;
   left: 10px;
   transition: all 0.5s ease-in-out;
   display: flex;
