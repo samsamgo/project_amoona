@@ -127,7 +127,7 @@ function PortfolioSection() {
           </Setlocdiv>
         </div>
 
-        <div className="row">
+        <div className="row" style={{ display: "flex", flexDirection: "row" }}>
           <div className="col-lg-4 col-sm-6 mb-4">
             {/* 포트폴리오 아이템 */}
             {data1 &&

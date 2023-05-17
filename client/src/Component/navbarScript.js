@@ -45,7 +45,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   responsiveNavItems.forEach(function (responsiveNavItem) {
     responsiveNavItem.addEventListener("click", () => {
-      if (window.getComputedStyle(navbarToggler).display !== "none") {
+      if (
+        window.getComputedStyle(navbarToggler).display !== "none" &&
+        navbarToggler.classList.contains("collapsed")
+      ) {
         navbarToggler.click();
       }
     });
