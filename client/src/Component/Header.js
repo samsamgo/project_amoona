@@ -101,12 +101,11 @@ import logo from "../Asset/2.png";
 
 import styled from "styled-components";
 import "../Asset/styles.css";
-import "../Asset/styles.css";
 import { useEffect } from "react";
 import navbarScript from "./navbarScript";
 
 const Nav = styled.nav`
-  background-color: #000;
+  background-color: #0000;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   font-weight: bold;
